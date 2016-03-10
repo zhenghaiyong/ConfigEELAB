@@ -62,7 +62,7 @@ do
 		echo $user:$user | chpasswd
 	fi
 	echo "Adding file ${SUDOERSDIR}/$user ..."
-	echo "$user	ALL=(ALL:ALL) ALL" > ${SUDOERSDIR}/$user    
+	echo "$user	ALL=(ALL:ALL) ALL" > ${SUDOERSDIR}/$user 
 done
 
 echo "===== WELL DONE! ====="
