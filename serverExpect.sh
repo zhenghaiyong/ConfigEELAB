@@ -8,15 +8,17 @@ if { [llength $argv] != 1 } {
 set HOST [lindex $argv 0]
 set USER "root"
 set PWD "oucee"
-set GROUP1 "2016SpringOUCEECPL1"
-set GROUP2 "2016SpringOUCEECPL2"
-set clientUserList1 "clientUserList1.txt"
-set clientUserList2 "clientUserList2.txt"
+set GROUP1 "2016FallZHY"
+set GROUP2 "2016FallYZB"
+set GROUP3 "2016FallWN"
+set clientUserList1 "clientUserListZHY.txt"
+set clientUserList2 "clientUserListYZB.txt"
+set clientUserList3 "clientUserListWN.txt"
 set clientGroupUserSudoSH "clientGroupUserSudo.sh"
 set DEST_DIR "/root"
 set timeout -1
 
-spawn scp ${clientGroupUserSudoSH} ${clientUserList1} ${clientUserList2} ${USER}@${HOST}:${DEST_DIR}
+spawn scp ${clientGroupUserSudoSH} ${clientUserList1} ${clientUserList2} ${clientUserList3} ${USER}@${HOST}:${DEST_DIR}
 expect {
     "*yes/no*" { send "yes\r"; exp_continue }
     "*assword:" { send "${PWD}\r" }
@@ -35,5 +37,8 @@ send "${DEST_DIR}/${clientGroupUserSudoSH} ${GROUP1} ${clientUserList1}\r"
 expect "#"
 send "${DEST_DIR}/${clientGroupUserSudoSH} ${GROUP2} ${clientUserList2}\r"
 expect "#"
+send "${DEST_DIR}/${clientGroupUserSudoSH} ${GROUP3} ${clientUserList3}\r"
+expect "#"
+send "poweroff\r"
 send "exit\r"
 expect eof
