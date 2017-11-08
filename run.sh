@@ -1,10 +1,11 @@
 #!/bin/sh
 # Ping网段所有IP
 # 2012/02/05
-ipStart=101 #开始ip
-ipEnd=120 #结束ip
+ipStart=103 #开始ip
+ipEnd=103 #结束ip
 ipNet="192.168.1"
 output=log
+echo `date`>>$output
 ip=$ipStart
 while [ $ip -le $ipEnd ]; do
 #yes正常，no主机不存在或不正常
